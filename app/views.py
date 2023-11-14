@@ -3,6 +3,13 @@ from app.forms import UserForm
 
 
 # Create your views here.
+def index(request):
+    return render(
+        request,
+        "index.html",
+    )
+
+
 def register(request):
     registered = False
     if request.method == "POST":
