@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_block %}
+Registro
+{% endblock %}
+
+{% block body_block %}
+<h1>Registro de nuevo Usuario</h1>
+
+{% if registered %}
+<p>Gracias por registrarte!</p>
+<a href="{% url 'index' %}">Página de inicio.</a>
+{% else %}
+<p>Regístrate aquí!</p><br>
+<form id="user_form" method="post" action="{% url 'register' %}">
+
+    {% csrf_token %}
+
+    {{ user_form.as_p }}
+
+    <input type="submit" name="submit" value="Register">
+
+</form>
+{% endif %}
+{% endblock %}
