@@ -7,4 +7,13 @@ Inicio
 
 {% block body_block %}
 <h1>Cash Flow</h1>
+
+{% if user.is_authenticated %}
+<p>Hola {{ user.username }}</p>
+<a href="{% url 'logout' %}">Salir</a>
+{% else %}
+    <a href="{% url 'register' %}">Registrarse</a>
+    <a href="{% url 'login'%} ">Ingresar</a>
+{% endif %}
+
 {% endblock %}
