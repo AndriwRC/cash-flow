@@ -5,13 +5,19 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 from app.forms import UserForm
+from app.models import Transaction
 
 
 # Create your views here.
 def index(request):
+    transactions = Transaction.objects.filter(user=request.user).order_by("-date")
+
+    balance = sum(t.amount if t.is_income() else -t.amount for t in transactions)
+
     return render(
         request,
         "index.html",
+        context={"transactions": transactions, "balance": balance},
     )
 
 
