@@ -10,6 +10,7 @@ from app.models import Transaction
 
 # Create your views here.
 def index(request):
+<<<<<<< HEAD
     if request.user.is_authenticated:
         transactions = Transaction.objects.filter(user=request.user).order_by("-date")
 
@@ -22,6 +23,17 @@ def index(request):
         )
 
     return render(request, "index.html")
+=======
+    transactions = Transaction.objects.filter(user=request.user).order_by("-date")
+
+    balance = sum(t.amount if t.is_income() else -t.amount for t in transactions)
+
+    return render(
+        request,
+        "index.html",
+        context={"transactions": transactions, "balance": balance},
+    )
+>>>>>>> c06149610b5ffd1e31887b0754a4cc08fe2b4159
 
 
 def register(request):
