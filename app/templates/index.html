@@ -10,7 +10,30 @@ Inicio
 
 {% if user.is_authenticated %}
 <p>Hola {{ user.username }}</p>
+<p>Tu saldo es de ${{ balance }}</p>
 <a href="{% url 'logout' %}">Salir</a>
+<h2>Lista de Transacciones:</h2>
+
+<ul>
+    {% if transactions %}
+        {% for transaction in transactions %}
+            <li>
+                <span>
+                    {% if transaction.is_income %}
+                    +${{ transaction.amount }}
+                    {% elif transaction.is_expense %}
+                    -${{ transaction.amount }}
+                    {% endif %}
+                </span>
+                <span>{{ transaction.description }}</span>
+                <span>{{ transaction.date }}</span>
+            </li>
+        {% endfor %}
+    {% else %}
+        Aún no hay transacciones registradas
+    {% endif %}
+</ul>
+
 {% else %}
     <a href="{% url 'register' %}">Registrarse</a>
     <a href="{% url 'login'%} ">Ingresar</a>
