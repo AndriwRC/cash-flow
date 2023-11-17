@@ -11,6 +11,7 @@ Inicio
 {% if user.is_authenticated %}
 <p>Hola {{ user.username }}</p>
 <p>Tu saldo es de ${{ balance }}</p>
+<a href="{% url 'add_transaction' %}">Agregar Transacción</a>
 <a href="{% url 'logout' %}">Salir</a>
 <h2>Lista de Transacciones:</h2>
 

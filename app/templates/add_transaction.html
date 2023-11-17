@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Nueva Transacción
+{% endblock %}
+
+{% block body_block %}
+    <h1>Agregar Nueva Transacción</h1>
+    <form method="post" action="{% url 'add_transaction' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Transacción</button>
+    </form>
+    <a href="{% url 'index' %}">Volver a la página de inicio</a>
+{% endblock %}

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect
-from app.forms import UserForm
+from app.forms import UserForm, TransactionForm
 from app.models import Transaction
 
 
@@ -22,6 +22,19 @@ def index(request):
         )
 
     return render(request, "index.html")
+
+
+def add_transaction(request):
+    if request.method == "POST":
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            transaction = form.save(commit=False)
+            transaction.user = request.user
+            transaction.save()
+            return redirect("index")
+    else:
+        form = TransactionForm()
+    return render(request, "add_transaction.html", {"form": form})
 
 
 def register(request):
