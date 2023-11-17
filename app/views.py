@@ -1,9 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.urls import reverse
-from django.shortcuts import redirect
 from app.forms import UserForm, TransactionForm
 from app.models import Transaction
 
@@ -35,6 +34,22 @@ def add_transaction(request):
     else:
         form = TransactionForm()
     return render(request, "add_transaction.html", {"form": form})
+
+
+def edit_transaction(request, transaction_id):
+    transaction = get_object_or_404(Transaction, id=transaction_id, user=request.user)
+
+    if request.method == "POST":
+        form = TransactionForm(request.POST, instance=transaction)
+        if form.is_valid():
+            form.save()
+            return redirect("index")
+    else:
+        form = TransactionForm(instance=transaction)
+
+    return render(
+        request, "edit_transaction.html", {"form": form, "transaction": transaction}
+    )
 
 
 def register(request):

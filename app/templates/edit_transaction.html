@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Modificar Transacción
+{% endblock %}
+
+{% block body_block %}
+    <h1>Editar Transacción</h1>
+    <form method="post" action="{% url 'edit_transaction' transaction.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'index' %}">Volver a la página de inicio</a>
+{% endblock %}

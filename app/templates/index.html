@@ -28,6 +28,7 @@ Inicio
                 </span>
                 <span>{{ transaction.description }}</span>
                 <span>{{ transaction.date }}</span>
+                <a href="{% url 'edit_transaction' transaction.id %}">Editar</a>
             </li>
         {% endfor %}
     {% else %}
