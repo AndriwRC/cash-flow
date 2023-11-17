@@ -1,6 +1,6 @@
-# Nombre del Proyecto
+# Cash Flow
 
-Descripción corta del proyecto.
+Aplicación para el control de flujo de caja.
 
 ## Requisitos Previos
 
