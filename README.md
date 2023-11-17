@@ -11,13 +11,13 @@ Asegúrate de tener instalado Python y pip en tu sistema.
 1. Clona el repositorio desde GitHub:
 
     ```bash
-    git clone https://github.com/tu_usuario/tu_proyecto.git
+    git clone https://github.com/AndriwRC/cash-flow.git
     ```
 
 2. Accede al directorio del proyecto:
 
     ```bash
-    cd tu_proyecto
+    cd cash-flow
     ```
 
 3. Crea y activa un entorno virtual:
@@ -34,7 +34,7 @@ Asegúrate de tener instalado Python y pip en tu sistema.
 Instala las dependencias del proyecto utilizando el archivo `requirements.txt`:
 
 ```bash
-pip install -r requirements.txt
+pip install -r req.txt
 
 ```
 
