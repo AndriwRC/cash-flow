@@ -52,6 +52,19 @@ def edit_transaction(request, transaction_id):
     )
 
 
+def delete_transaction(request, transaction_id):
+    transaction = get_object_or_404(Transaction, id=transaction_id, user=request.user)
+    transaction.delete()
+    return redirect("index")
+
+
+def delete_transaction_confirm(request, transaction_id):
+    transaction = get_object_or_404(Transaction, id=transaction_id, user=request.user)
+    return render(
+        request, "delete_transaction_confirm.html", {"transaction": transaction}
+    )
+
+
 def register(request):
     registered = False
     if request.method == "POST":

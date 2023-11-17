@@ -29,6 +29,8 @@ Inicio
                 <span>{{ transaction.description }}</span>
                 <span>{{ transaction.date }}</span>
                 <a href="{% url 'edit_transaction' transaction.id %}">Editar</a>
+                <a href="{% url 'delete_transaction_confirm' transaction.id %}">Eliminar</a>
+
             </li>
         {% endfor %}
     {% else %}

@@ -26,6 +26,16 @@ urlpatterns = [
         views.edit_transaction,
         name="edit_transaction",
     ),
+    path(
+        "transactions/delete/<int:transaction_id>/",
+        views.delete_transaction_confirm,
+        name="delete_transaction_confirm",
+    ),
+    path(
+        "transactions/delete/<int:transaction_id>/confirm/",
+        views.delete_transaction,
+        name="delete_transaction",
+    ),
     path("register/", views.register, name="register"),
     path("login/", views.user_login, name="login"),
     path("logout/", views.user_logout, name="logout"),

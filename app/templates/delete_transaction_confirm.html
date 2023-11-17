@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Confirmar Eliminación
+{% endblock %}
+
+{% block body_block %}
+    <h1>Confirmar Eliminación</h1>
+    <p>¿Estás seguro de que deseas eliminar la transacción "{{ transaction.description }}"?</p>
+    <form method="post" action="{% url 'delete_transaction' transaction.id %}">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar</button>
+    </form>
+    <a href="{% url 'index' %}">Cancelar</a>
+{% endblock %}
